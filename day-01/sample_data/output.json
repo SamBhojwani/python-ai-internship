@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Alice",
+        "age": 28.0,
+        "city": "Mumbai",
+        "email": "alice@example.com",
+        "salary": 60000.0
+    },
+    {
+        "name": "Bob",
+        "age": null,
+        "city": "Delhi",
+        "email": "bob@example.com",
+        "salary": 72000.0
+    },
+    {
+        "name": "Charlie",
+        "age": 34.0,
+        "city": null,
+        "email": "charlie@example.com",
+        "salary": 55000.0
+    },
+    {
+        "name": "Diana",
+        "age": 29.0,
+        "city": "Pune",
+        "email": "diana@example.com",
+        "salary": 68000.0
+    },
+    {
+        "name": "Eve",
+        "age": 31.0,
+        "city": "Mumbai",
+        "email": null,
+        "salary": 80000.0
+    },
+    {
+        "name": "Frank",
+        "age": 26.0,
+        "city": "Delhi",
+        "email": "frank@example.com",
+        "salary": 45000.0
+    },
+    {
+        "name": "Grace",
+        "age": null,
+        "city": "Chennai",
+        "email": "grace@example.com",
+        "salary": 71000.0
+    },
+    {
+        "name": "Hank",
+        "age": 38.0,
+        "city": "Pune",
+        "email": "hank@example.com",
+        "salary": null
+    },
+    {
+        "name": "Ivy",
+        "age": 24.0,
+        "city": "Mumbai",
+        "email": "ivy@example.com",
+        "salary": 52000.0
+    },
+    {
+        "name": "Jack",
+        "age": 30.0,
+        "city": "Delhi",
+        "email": null,
+        "salary": 63000.0
+    }
+]
