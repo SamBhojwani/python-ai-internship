@@ -1,0 +1,11 @@
+name,age,city,email,salary
+Alice,28,Mumbai,alice@example.com,60000
+Bob,,Delhi,bob@example.com,72000
+Charlie,34,,charlie@example.com,55000
+Diana,29,Pune,diana@example.com,68000
+Eve,31,Mumbai,,80000
+Frank,26,Delhi,frank@example.com,45000
+Grace,,Chennai,grace@example.com,71000
+Hank,38,Pune,hank@example.com,
+Ivy,24,Mumbai,ivy@example.com,52000
+Jack,30,Delhi,,63000
