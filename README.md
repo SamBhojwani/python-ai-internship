@@ -31,3 +31,29 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+## Day 02 – Python Data Structures & Utility Development
+
+### Scripts
+
+**student_manager.py** – Menu-driven student record manager with add, update, delete, search and display operations.
+```bash
+python day-02/student_manager.py
+```
+
+**utils.py** – Reusable utility module with string, number and list helper functions.
+
+**test_utils.py** – Tests for all functions in utils.py.
+```bash
+python day-02/test_utils.py
+```
+
+**employee_analysis.py** – Processes employee records using list comprehensions, lambda functions and built-in functions.
+```bash
+python day-02/employee_analysis.py
+```
+
+**contact_manager.py** – CLI-based contact manager with add, search, update, delete and display operations.
+```bash
+python day-02/contact_manager.py
+```
