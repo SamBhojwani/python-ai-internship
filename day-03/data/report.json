@@ -1,0 +1,64 @@
+{
+    "total_employees": 10,
+    "average_salary": 68500.0,
+    "highest_salary": {
+        "name": "Harish",
+        "salary": 95000.0
+    },
+    "lowest_salary": {
+        "name": "Ekta",
+        "salary": 45000.0
+    },
+    "all_employees": [
+        {
+            "name": "Harish",
+            "salary": 95000.0,
+            "department": "Engineering"
+        },
+        {
+            "name": "Dhruv",
+            "salary": 90000.0,
+            "department": "Engineering"
+        },
+        {
+            "name": "Farhan",
+            "salary": 80000.0,
+            "department": "Data Science"
+        },
+        {
+            "name": "Bhumi",
+            "salary": 75000.0,
+            "department": "Data Science"
+        },
+        {
+            "name": "Isha",
+            "salary": 70000.0,
+            "department": "HR"
+        },
+        {
+            "name": "Jay",
+            "salary": 65000.0,
+            "department": "Data Science"
+        },
+        {
+            "name": "Chaitanya",
+            "salary": 60000.0,
+            "department": "DevOps"
+        },
+        {
+            "name": "Geeta",
+            "salary": 55000.0,
+            "department": "DevOps"
+        },
+        {
+            "name": "Aman",
+            "salary": 50000.0,
+            "department": "Engineering"
+        },
+        {
+            "name": "Ekta",
+            "salary": 45000.0,
+            "department": "HR"
+        }
+    ]
+}

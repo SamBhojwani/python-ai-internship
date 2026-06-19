@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Lunch",
+        "amount": 50.0,
+        "category": "Food"
+    },
+    {
+        "title": "Uber to college",
+        "amount": 80.0,
+        "category": "Travel"
+    },
+    {
+        "title": "Electricity bill",
+        "amount": 1200.0,
+        "category": "Bills"
+    },
+    {
+        "title": "Groceries",
+        "amount": 500.0,
+        "category": "Food"
+    },
+    {
+        "title": "Movie tickets",
+        "amount": 700.0,
+        "category": "Entertainment"
+    }
+]
