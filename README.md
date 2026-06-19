@@ -57,3 +57,22 @@ python day-02/employee_analysis.py
 ```bash
 python day-02/contact_manager.py
 ```
+
+## Day 03 – Modules, Exception Handling & File Processing
+
+### Scripts
+
+**expense_tracker.py** – CLI expense tracker that persists data using a JSON file.
+```bash
+python day-03/expense_tracker.py
+```
+
+**file_analyzer.py** – Reads a text file and displays line, word and character counts.
+```bash
+python day-03/file_analyzer.py day-03/data/sample.txt
+```
+
+**csv_report_generator.py** – Reads employee CSV data and exports a salary summary as JSON.
+```bash
+python day-03/csv_report_generator.py day-03/data/employees.csv day-03/data/report.json
+```
