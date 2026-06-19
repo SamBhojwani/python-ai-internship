@@ -105,7 +105,6 @@ def calculate_total(expenses: list) -> None:
     total = sum(e["amount"] for e in expenses)
     print(f"\nTotal Expenses: ₹{total:.2f}")
 
-    # breakdown by category
     categories: dict[str, float] = {}
     for e in expenses:
         categories[e["category"]] = categories.get(e["category"], 0) + e["amount"]
@@ -120,26 +119,29 @@ def main() -> None:
     expenses = load_expenses()
     print("Welcome to Expense Tracker")
 
-    while True:
-        print("\n--- Menu ---")
-        print("1. Add Expense")
-        print("2. View Expenses")
-        print("3. Calculate Total")
-        print("4. Exit")
+    try:
+        while True:
+            print("\n--- Menu ---")
+            print("1. Add Expense")
+            print("2. View Expenses")
+            print("3. Calculate Total")
+            print("4. Exit")
 
-        choice = input("\nEnter choice: ").strip()
+            choice = input("\nEnter choice: ").strip()
 
-        if choice == "1":
-            add_expense(expenses)
-        elif choice == "2":
-            view_expenses(expenses)
-        elif choice == "3":
-            calculate_total(expenses)
-        elif choice == "4":
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please enter 1-4.")
+            if choice == "1":
+                add_expense(expenses)
+            elif choice == "2":
+                view_expenses(expenses)
+            elif choice == "3":
+                calculate_total(expenses)
+            elif choice == "4":
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please enter 1-4.")
+    except KeyboardInterrupt:
+        print("\nProgram interrupted. Goodbye!")
 
 
 if __name__ == "__main__":
