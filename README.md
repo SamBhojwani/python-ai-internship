@@ -76,3 +76,17 @@ python day-03/file_analyzer.py day-03/data/sample.txt
 ```bash
 python day-03/csv_report_generator.py day-03/data/employees.csv day-03/data/report.json
 ```
+
+## Day 04 – Data Processing, Logging & Configuration Management
+
+### Scripts
+
+**employee_processor.py** – Reads employee CSV data, calculates salary statistics, groups by department and generates a JSON report. Logs to both terminal and app.log. Configuration driven via config.json.
+```bash
+python day-04/employee_processor.py
+```
+
+**log_analyzer.py** – Reads a log file and counts INFO, WARNING and ERROR entries.
+```bash
+python day-04/log_analyzer.py day-04/app.log
+```
