@@ -4,6 +4,7 @@ employee_processor.py
 Reads employee data from a CSV file, calculates salary statistics,
 groups employees by department, and generates a summary report.
 Logs application events to both terminal and app.log file.
+Configuration is loaded from config.json.
 
 Usage:
     python employee_processor.py
@@ -14,26 +15,50 @@ import json
 import logging
 import os
 
-INPUT_FILE = "employees.csv"
-REPORT_FILE = "reports/report.json"
-LOG_FILE = "app.log"
+
+def load_config(config_path: str = "config.json") -> dict:
+    """
+    Load configuration from a JSON file.
+
+    Args:
+        config_path: Path to the config file.
+
+    Returns:
+        Config dict.
+
+    Raises:
+        FileNotFoundError: If config file doesn't exist.
+        ValueError: If config file contains invalid JSON.
+    """
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Config file not found: {config_path}")
+    except json.JSONDecodeError:
+        raise ValueError("Config file contains invalid JSON.")
+
+
+# load config first
+config = load_config()
+
+INPUT_FILE = config["input_file"]
+REPORT_FILE = config["report_file"]
+LOG_FILE = config["log_file"]
 
 # create logger
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-# formatter
 formatter = logging.Formatter(
     "%(asctime)s [%(levelname)s] %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# console handler
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# file handler
 file_handler = logging.FileHandler(LOG_FILE, mode="a", encoding="utf-8")
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
