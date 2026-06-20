@@ -1,0 +1,90 @@
+{
+    "summary": {
+        "total_employees": 10,
+        "average_salary": 74800.0,
+        "highest_salary": {
+            "name": "Geeta Nair",
+            "salary": 95000.0
+        },
+        "lowest_salary": {
+            "name": "Farhan Khan",
+            "salary": 50000.0
+        }
+    },
+    "departments": {
+        "Engineering": {
+            "total_employees": 4,
+            "average_salary": 89500.0,
+            "highest_salary": 95000.0,
+            "lowest_salary": 85000.0,
+            "employees": [
+                {
+                    "id": "E001",
+                    "name": "Aman Sharma",
+                    "salary": 90000.0
+                },
+                {
+                    "id": "E002",
+                    "name": "Bhumi Patel",
+                    "salary": 85000.0
+                },
+                {
+                    "id": "E007",
+                    "name": "Geeta Nair",
+                    "salary": 95000.0
+                },
+                {
+                    "id": "E010",
+                    "name": "Jay Malhotra",
+                    "salary": 88000.0
+                }
+            ]
+        },
+        "Data Science": {
+            "total_employees": 3,
+            "average_salary": 75000.0,
+            "highest_salary": 80000.0,
+            "lowest_salary": 70000.0,
+            "employees": [
+                {
+                    "id": "E003",
+                    "name": "Chaitanya Rao",
+                    "salary": 75000.0
+                },
+                {
+                    "id": "E004",
+                    "name": "Dhruv Mehta",
+                    "salary": 80000.0
+                },
+                {
+                    "id": "E008",
+                    "name": "Harish Kumar",
+                    "salary": 70000.0
+                }
+            ]
+        },
+        "HR": {
+            "total_employees": 3,
+            "average_salary": 55000.0,
+            "highest_salary": 60000.0,
+            "lowest_salary": 50000.0,
+            "employees": [
+                {
+                    "id": "E005",
+                    "name": "Ekta Singh",
+                    "salary": 55000.0
+                },
+                {
+                    "id": "E006",
+                    "name": "Farhan Khan",
+                    "salary": 50000.0
+                },
+                {
+                    "id": "E009",
+                    "name": "Isha Joshi",
+                    "salary": 60000.0
+                }
+            ]
+        }
+    }
+}
