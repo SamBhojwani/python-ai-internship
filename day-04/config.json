@@ -1,0 +1,5 @@
+{
+    "input_file": "employees.csv",
+    "report_file": "reports/report.json",
+    "log_file": "app.log"
+}
