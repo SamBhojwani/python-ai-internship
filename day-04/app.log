@@ -3,3 +3,8 @@
 2026-06-20 12:37:33 [INFO] Loaded 10 employee records.
 2026-06-20 12:37:33 [INFO] Report saved to: reports/report.json
 2026-06-20 12:37:33 [INFO] Report generation complete.
+2026-06-20 13:46:02 [INFO] Application started.
+2026-06-20 13:46:02 [INFO] Loading employee data from: employees.csv
+2026-06-20 13:46:02 [INFO] Loaded 10 employee records.
+2026-06-20 13:46:02 [INFO] Report saved to: reports/report.json
+2026-06-20 13:46:02 [INFO] Report generation complete.
