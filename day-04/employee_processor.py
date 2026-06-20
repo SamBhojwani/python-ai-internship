@@ -3,6 +3,7 @@ employee_processor.py
 ---------------------
 Reads employee data from a CSV file, calculates salary statistics,
 groups employees by department, and generates a summary report.
+Logs application events to both terminal and app.log file.
 
 Usage:
     python employee_processor.py
@@ -13,15 +14,29 @@ import json
 import logging
 import os
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-)
-logger = logging.getLogger(__name__)
-
 INPUT_FILE = "employees.csv"
 REPORT_FILE = "reports/report.json"
+LOG_FILE = "app.log"
+
+# create logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# formatter
+formatter = logging.Formatter(
+    "%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+
+# console handler
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+# file handler
+file_handler = logging.FileHandler(LOG_FILE, mode="a", encoding="utf-8")
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 
 def read_employees(filepath: str) -> list[dict]:
@@ -160,6 +175,7 @@ def main() -> None:
 
         report = {"summary": stats, "departments": departments}
         save_report(report, REPORT_FILE)
+        logger.info("Report generation complete.")
 
     except (FileNotFoundError, ValueError) as e:
         logger.error(f"Processing failed: {e}")
