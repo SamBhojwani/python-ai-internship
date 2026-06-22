@@ -90,3 +90,35 @@ python day-04/employee_processor.py
 ```bash
 python day-04/log_analyzer.py day-04/app.log
 ```
+
+
+## Day 05 – Object-Oriented Programming & System Design Basics
+
+### Structure
+day-05/
+
+├── models/
+
+│   └── employee.py        ← Employee class
+
+├── services/
+
+│   └── employee_service.py ← Business logic
+
+├── data/
+
+│   └── employees.json     ← Persisted data
+
+└── main.py                ← CLI interface
+
+### Features
+- Add, view, update, delete and list employees
+- Department statistics (total, average salary, highest paid)
+- Search by ID, name and department
+- Email format validation
+- JSON persistence — data survives between runs
+
+### Usage
+```bash
+python day-05/main.py
+```
