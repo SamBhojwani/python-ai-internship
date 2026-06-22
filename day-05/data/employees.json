@@ -1,0 +1,23 @@
+[
+    {
+        "employee_id": "E001",
+        "name": "Aman Sharma",
+        "department": "Engineering",
+        "salary": 90000.0,
+        "email": "aman@example.com"
+    },
+    {
+        "employee_id": "E002",
+        "name": "Bhumi Patel",
+        "department": "Data Science",
+        "salary": 75000.0,
+        "email": "bhumi@example.com"
+    },
+    {
+        "employee_id": "E003",
+        "name": "Chaitanya Rao",
+        "department": "HR",
+        "salary": 55000.0,
+        "email": "chaitanya@example.com"
+    }
+]

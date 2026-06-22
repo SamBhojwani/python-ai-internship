@@ -123,3 +123,39 @@ class EmployeeService:
                 departments[emp.department] = []
             departments[emp.department].append(emp)
         return departments
+    
+    def save_to_json(self, filepath: str) -> None:
+        """
+        Save all employee records to a JSON file.
+
+        Args:
+            filepath: Path to the JSON file.
+        """
+        import json
+        import os
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        data = [emp.to_dict() for emp in self.employees.values()]
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+        logger.info(f"Employees saved to {filepath}")
+
+    def load_from_json(self, filepath: str) -> None:
+        """
+        Load employee records from a JSON file.
+
+        Args:
+            filepath: Path to the JSON file.
+        """
+        import json
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.employees = {
+                emp["employee_id"]: Employee.from_dict(emp) for emp in data
+            }
+            logger.info(f"Loaded {len(self.employees)} employees from {filepath}")
+        except FileNotFoundError:
+            logger.info("No existing data file found. Starting fresh.")
+        except json.JSONDecodeError:
+            logger.error("Data file is corrupted. Starting fresh.")
+    
