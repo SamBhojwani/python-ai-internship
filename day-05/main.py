@@ -11,6 +11,9 @@ import logging
 from models.employee import Employee
 from services.employee_service import EmployeeService
 
+service = EmployeeService()
+DATA_FILE = "data/employees.json"
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -158,11 +161,13 @@ def department_stats() -> None:
 
 
 def main() -> None:
-    """Main loop — show menu and handle user input."""
+    """Main loop — load employees and show menu."""
     print("Welcome to Employee Management System")
+    service.load_from_json(DATA_FILE)
 
     try:
         while True:
+            print("\n--- Menu ---")
             print("1. Add Employee")
             print("2. View Employee")
             print("3. Update Employee")
@@ -175,19 +180,22 @@ def main() -> None:
 
             if choice == "1":
                 add_employee()
+                service.save_to_json(DATA_FILE)
             elif choice == "2":
                 view_employee()
             elif choice == "3":
                 update_employee()
+                service.save_to_json(DATA_FILE)
             elif choice == "4":
                 delete_employee()
+                service.save_to_json(DATA_FILE)
             elif choice == "5":
                 list_employees()
             elif choice == "6":
                 department_stats()
             elif choice == "7":
                 print("Goodbye!")
-                break   
+                break
             else:
                 print("Invalid choice. Please enter 1-7.")
     except KeyboardInterrupt:
