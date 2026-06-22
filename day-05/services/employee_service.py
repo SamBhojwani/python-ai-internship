@@ -158,4 +158,14 @@ class EmployeeService:
             logger.info("No existing data file found. Starting fresh.")
         except json.JSONDecodeError:
             logger.error("Data file is corrupted. Starting fresh.")
+
+    def search_by_name(self, name: str) -> list[Employee]:
+        """Search employees by name (case-insensitive partial match)."""
+        name = name.lower()
+        return [emp for emp in self.employees.values() if name in emp.name.lower()]
+
+    def search_by_department(self, department: str) -> list[Employee]:
+        """Search employees by department (case-insensitive partial match)."""
+        department = department.lower()
+        return [emp for emp in self.employees.values() if department in emp.department.lower()]
     

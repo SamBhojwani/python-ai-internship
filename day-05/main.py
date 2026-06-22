@@ -11,9 +11,6 @@ import logging
 from models.employee import Employee
 from services.employee_service import EmployeeService
 
-service = EmployeeService()
-DATA_FILE = "data/employees.json"
-
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -22,6 +19,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 service = EmployeeService()
+DATA_FILE = "data/employees.json"
+
+
+def is_valid_email(email: str) -> bool:
+    """Basic email format validation."""
+    return "@" in email and "." in email.split("@")[-1]
 
 
 def add_employee() -> None:
@@ -40,6 +43,9 @@ def add_employee() -> None:
         return
 
     email = input("Email: ").strip()
+    if not is_valid_email(email):
+        print("Invalid email format.")
+        return
 
     if not employee_id or not name or not department or not email:
         print("All fields are required.")
@@ -102,6 +108,10 @@ def update_employee() -> None:
             print(f"Invalid salary: {e}")
             return
 
+    if field == "email" and not is_valid_email(value):
+        print("Invalid email format.")
+        return
+
     try:
         service.update_employee(employee_id, field, value)
         print(f"{field.capitalize()} updated successfully.")
@@ -138,6 +148,7 @@ def list_employees() -> None:
     print("=" * 70)
     print(f"Total: {len(employees)} employees")
 
+
 def department_stats() -> None:
     """Display department statistics."""
     print("\n-- Department Statistics --")
@@ -160,6 +171,47 @@ def department_stats() -> None:
     print()
 
 
+def search_employees() -> None:
+    """Search employees by ID, name or department."""
+    print("\n-- Search Employees --")
+    print("1. Search by ID")
+    print("2. Search by Name")
+    print("3. Search by Department")
+    choice = input("Enter choice: ").strip()
+
+    if choice == "1":
+        employee_id = input("Enter Employee ID: ").strip()
+        try:
+            emp = service.get_employee(employee_id)
+            print("\n" + "-" * 50)
+            print(emp)
+            print("-" * 50)
+        except KeyError as e:
+            print(f"Error: {e}")
+
+    elif choice == "2":
+        name = input("Enter Name: ").strip()
+        results = service.search_by_name(name)
+        if not results:
+            print("No employees found.")
+        else:
+            print()
+            for emp in results:
+                print(emp)
+
+    elif choice == "3":
+        department = input("Enter Department: ").strip()
+        results = service.search_by_department(department)
+        if not results:
+            print("No employees found.")
+        else:
+            print()
+            for emp in results:
+                print(emp)
+    else:
+        print("Invalid choice.")
+
+
 def main() -> None:
     """Main loop — load employees and show menu."""
     print("Welcome to Employee Management System")
@@ -174,7 +226,8 @@ def main() -> None:
             print("4. Delete Employee")
             print("5. List All Employees")
             print("6. Department Statistics")
-            print("7. Exit")
+            print("7. Search Employees")
+            print("8. Exit")
 
             choice = input("\nEnter choice: ").strip()
 
@@ -194,10 +247,12 @@ def main() -> None:
             elif choice == "6":
                 department_stats()
             elif choice == "7":
+                search_employees()
+            elif choice == "8":
                 print("Goodbye!")
                 break
             else:
-                print("Invalid choice. Please enter 1-7.")
+                print("Invalid choice. Please enter 1-8.")
     except KeyboardInterrupt:
         print("\nProgram interrupted. Goodbye!")
 
