@@ -135,6 +135,27 @@ def list_employees() -> None:
     print("=" * 70)
     print(f"Total: {len(employees)} employees")
 
+def department_stats() -> None:
+    """Display department statistics."""
+    print("\n-- Department Statistics --")
+
+    try:
+        print(f"\nTotal Employees : {service.total_employees()}")
+        print(f"Average Salary  : ₹{service.average_salary():,}")
+
+        top = service.highest_paid()
+        print(f"Highest Paid    : {top.name} — ₹{top.salary:,}")
+
+        print("\nBy Department:")
+        for dept, members in service.group_by_department().items():
+            salaries = [m.salary for m in members]
+            print(f"\n  {dept}")
+            print(f"    Employees  : {len(members)}")
+            print(f"    Avg Salary : ₹{round(sum(salaries)/len(salaries), 2):,}")
+    except ValueError as e:
+        print(f"Error: {e}")
+    print()
+
 
 def main() -> None:
     """Main loop — show menu and handle user input."""
@@ -142,13 +163,13 @@ def main() -> None:
 
     try:
         while True:
-            print("\n--- Menu ---")
             print("1. Add Employee")
             print("2. View Employee")
             print("3. Update Employee")
             print("4. Delete Employee")
             print("5. List All Employees")
-            print("6. Exit")
+            print("6. Department Statistics")
+            print("7. Exit")
 
             choice = input("\nEnter choice: ").strip()
 
@@ -163,10 +184,12 @@ def main() -> None:
             elif choice == "5":
                 list_employees()
             elif choice == "6":
+                department_stats()
+            elif choice == "7":
                 print("Goodbye!")
-                break
+                break   
             else:
-                print("Invalid choice. Please enter 1-6.")
+                print("Invalid choice. Please enter 1-7.")
     except KeyboardInterrupt:
         print("\nProgram interrupted. Goodbye!")
 

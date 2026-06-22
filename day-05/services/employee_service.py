@@ -87,3 +87,39 @@ class EmployeeService:
     def list_employees(self) -> list[Employee]:
         """Return a list of all employees."""
         return list(self.employees.values())
+
+    def total_employees(self) -> int:
+        """Return total number of employees."""
+        return len(self.employees)
+
+    def average_salary(self) -> float:
+        """
+        Return average salary across all employees.
+
+        Raises:
+            ValueError: If no employees exist.
+        """
+        if not self.employees:
+            raise ValueError("No employees found.")
+        salaries = [emp.salary for emp in self.employees.values()]
+        return round(sum(salaries) / len(salaries), 2)
+
+    def highest_paid(self) -> Employee:
+        """
+        Return the highest paid employee.
+
+        Raises:
+            ValueError: If no employees exist.
+        """
+        if not self.employees:
+            raise ValueError("No employees found.")
+        return max(self.employees.values(), key=lambda e: e.salary)
+
+    def group_by_department(self) -> dict[str, list[Employee]]:
+        """Group employees by department."""
+        departments: dict[str, list[Employee]] = {}
+        for emp in self.employees.values():
+            if emp.department not in departments:
+                departments[emp.department] = []
+            departments[emp.department].append(emp)
+        return departments
