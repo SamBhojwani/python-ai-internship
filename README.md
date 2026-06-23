@@ -122,3 +122,47 @@ day-05/
 ```bash
 python day-05/main.py
 ```
+
+## Day 06 – Unit Testing, Debugging & Code Quality
+
+### Structure
+day-06/
+
+├── models/
+
+│   └── employee.py        ← refactored model
+
+├── services/
+
+│   └── employee_service.py ← refactored service
+
+├── tests/
+
+│   ├── test_employee.py   ← unit tests for employee system
+
+│   └── test_fixed_code.py ← tests verifying bug fixes
+
+├── buggy_code.py          ← intentional bugs for debugging practice
+
+├── fixed_code.py          ← fixed version with documented fixes
+
+├── main.py                ← refactored CLI with file logging
+
+└── app.log                ← generated log file
+
+### Running Tests
+```bash
+python -m unittest tests/test_employee.py
+python -m unittest tests/test_fixed_code.py
+```
+
+### Bugs Fixed in buggy_code.py
+- `calculate_discount` — discount percent not divided by 100
+- `get_top_earners` — sorted ascending instead of descending
+- `calculate_compound_interest` — used `^` (XOR) instead of `**` (power)
+- `find_common_elements` — mutating list while iterating caused incorrect results
+
+### Refactoring Changes from Day 05
+- Moved `json` and `os` imports to top of `employee_service.py`
+- Removed duplicate logging setup in `main.py`
+- Added `__repr__` method to `Employee` class
