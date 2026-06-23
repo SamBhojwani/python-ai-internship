@@ -1,0 +1,9 @@
+[
+    {
+        "employee_id": "01",
+        "name": "ram",
+        "department": "cs",
+        "salary": 50.0,
+        "email": "ram@example.com"
+    }
+]
