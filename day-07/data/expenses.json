@@ -1,0 +1,44 @@
+[
+    {
+        "expense_id": "E001",
+        "title": "Lunch",
+        "category": "Food",
+        "amount": 150.0,
+        "date": "2026-06-24"
+    },
+    {
+        "expense_id": "E002",
+        "title": "Uber to office",
+        "category": "Travel",
+        "amount": 80.0,
+        "date": "2026-06-24"
+    },
+    {
+        "expense_id": "E003",
+        "title": "Groceries",
+        "category": "Food",
+        "amount": 500.0,
+        "date": "2026-06-20"
+    },
+    {
+        "expense_id": "E005",
+        "title": "Electricity bill",
+        "category": "Bills",
+        "amount": 1200.0,
+        "date": "2026-06-22"
+    },
+    {
+        "expense_id": "E006",
+        "title": "Dinner with friends",
+        "category": "Food",
+        "amount": 800.0,
+        "date": "2026-06-23"
+    },
+    {
+        "expense_id": "E007",
+        "title": "Metro card recharge",
+        "category": "Travel",
+        "amount": 200.0,
+        "date": "2026-06-23"
+    }
+]
