@@ -1,0 +1,23 @@
+2026-06-24 15:24:59 [INFO] Application Started
+2026-06-24 15:24:59 [INFO] No existing data file found. Starting fresh.
+2026-06-24 16:05:03 [INFO] Application Started
+2026-06-24 16:05:03 [INFO] No existing data file found. Starting fresh.
+2026-06-24 16:05:22 [INFO] Expense Added: Lunch - ₹150.0
+2026-06-24 16:05:22 [INFO] Expenses saved to file.
+2026-06-24 16:05:38 [INFO] Expense Added: Uber to office - ₹80.0
+2026-06-24 16:05:38 [INFO] Expenses saved to file.
+2026-06-24 16:06:02 [INFO] Expense Added: Groceries - ₹500.0
+2026-06-24 16:06:02 [INFO] Expenses saved to file.
+2026-06-24 16:06:34 [INFO] Expense Added: Movie ticket - ₹500.0
+2026-06-24 16:06:34 [INFO] Expenses saved to file.
+2026-06-24 16:06:58 [INFO] Expense Added: Electricity bill - ₹1200.0
+2026-06-24 16:06:58 [INFO] Expenses saved to file.
+2026-06-24 16:07:25 [INFO] Expense Added: Dinner with friends - ₹800.0
+2026-06-24 16:07:25 [INFO] Expenses saved to file.
+2026-06-24 16:07:44 [INFO] Expense Added: Metro card recharge - ₹200.0
+2026-06-24 16:07:44 [INFO] Expenses saved to file.
+2026-06-24 16:07:59 [INFO] Report Generated
+2026-06-24 16:08:40 [INFO] Expense Deleted: Movie ticket
+2026-06-24 16:08:40 [INFO] Expenses saved to file.
+2026-06-24 16:11:25 [INFO] Application Started
+2026-06-24 16:11:25 [INFO] Loaded 6 expenses from file.
