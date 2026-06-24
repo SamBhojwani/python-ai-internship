@@ -166,3 +166,27 @@ python -m unittest tests/test_fixed_code.py
 - Moved `json` and `os` imports to top of `employee_service.py`
 - Removed duplicate logging setup in `main.py`
 - Added `__repr__` method to `Employee` class
+
+
+## Day 07 – Week 1 Mini Project: Personal Finance Tracker
+
+A complete CLI-based Personal Finance Tracker consolidating all Week 1 concepts.
+
+### Features
+- Add, view, delete and search expenses
+- Financial reports — total, highest, lowest, category-wise summary
+- JSON persistence
+- File logging to `logs/app.log`
+- 18 unit tests
+
+### Usage
+```bash
+cd day-07
+python main.py
+```
+
+### Run Tests
+```bash
+cd day-07
+python -m unittest tests/test_expense.py
+```
