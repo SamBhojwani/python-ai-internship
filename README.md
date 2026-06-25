@@ -190,3 +190,26 @@ python main.py
 cd day-07
 python -m unittest tests/test_expense.py
 ```
+
+
+## Day 08 – NumPy & Numerical Computing
+
+**student_marks.py** – Analyzes student marks — highest, lowest, average, median and students above average.
+```bash
+python day-08/student_marks.py
+```
+
+**matrix_calculator.py** – Performs matrix addition, subtraction, multiplication and transpose.
+```bash
+python day-08/matrix_calculator.py
+```
+
+**sales_analysis.py** – Analyzes 12 months of sales data with a bar chart visualization.
+```bash
+python day-08/sales_analysis.py
+```
+
+**salary_analysis.py** – Generates random salary data for 100 employees and calculates stats including top 10 salaries.
+```bash
+python day-08/salary_analysis.py
+```
