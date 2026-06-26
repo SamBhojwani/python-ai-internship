@@ -213,3 +213,26 @@ python day-08/sales_analysis.py
 ```bash
 python day-08/salary_analysis.py
 ```
+
+
+## Day 09 - Pandas & Data Analysis
+
+**employee_analysis.py** - Analyzes employee dataset - total, average/highest/lowest salary, department breakdown and top 5 earners. Exports summary to CSV.
+```bash
+python day-09/employee_analysis.py
+```
+
+**student_analysis.py** - Analyzes student performance - highest/lowest scorer, students above 80% and failing students.
+```bash
+python day-09/student_analysis.py
+```
+
+**dataset_cleaner.py** - Cleans a messy dataset - fills missing values with column averages, removes duplicates and saves cleaned CSV.
+```bash
+python day-09/dataset_cleaner.py
+```
+
+**dataset_analyzer.py** - Reusable DatasetAnalyzer class that works with any CSV - summary, missing values and report export.
+```bash
+python day-09/dataset_analyzer.py
+```
