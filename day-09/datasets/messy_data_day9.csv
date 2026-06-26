@@ -1,0 +1,15 @@
+id,name,age,salary,department
+1,Aman Sharma,28,90000,Engineering
+2,Bhumi Patel,,75000,Data Science
+3,Chaitanya Rao,32,,Engineering
+4,Dhruv Mehta,29,55000,HR
+5,Ekta Singh,27,80000,Data Science
+6,Farhan Khan,,50000,HR
+3,Chaitanya Rao,32,,Engineering
+7,Geeta Nair,35,95000,
+8,Harish Kumar,26,70000,Data Science
+9,,30,60000,HR
+10,Jay Malhotra,33,88000,Engineering
+8,Harish Kumar,26,70000,Data Science
+11,Kavya Reddy,,82000,Data Science
+12,Lokesh Verma,36,,Engineering
