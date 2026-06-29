@@ -236,3 +236,26 @@ python day-09/dataset_cleaner.py
 ```bash
 python day-09/dataset_analyzer.py
 ```
+
+
+## Day 10 - Exploratory Data Analysis (EDA)
+
+**employee_eda.py** - EDA on employee dataset - department breakdown, salary distribution and top 10 earners. Exports to CSV.
+```bash
+python day-10/employee_eda.py
+```
+
+**student_eda.py** - EDA on student dataset - subject-wise averages, top/lowest performer, above 80% and failing students. Exports to CSV.
+```bash
+python day-10/student_eda.py
+```
+
+**sales_eda.py** - EDA on sales dataset - monthly revenue with bar chart, top products and category breakdown. Exports to CSV.
+```bash
+python day-10/sales_eda.py
+```
+
+**eda_report_generator.py** - Reusable EDAReportGenerator class with dataset info, descriptive statistics, group analysis and report export. Works with any CSV.
+```bash
+python day-10/eda_report_generator.py
+```
