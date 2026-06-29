@@ -1,0 +1,4 @@
+department,total_employees,average_salary,highest_salary,lowest_salary
+Data Science,5,77000.0,82000,70000
+Engineering,6,89500.0,95000,85000
+HR,4,55750.0,60000,50000
