@@ -1,0 +1,16 @@
+employee_id,name,department,salary,age,city
+E001,Aman Sharma,Engineering,90000,28,Mumbai
+E002,Bhumi Patel,Data Science,75000,25,Delhi
+E003,Chaitanya Rao,Engineering,85000,32,Bangalore
+E004,Dhruv Mehta,HR,55000,29,Mumbai
+E005,Ekta Singh,Data Science,80000,27,Pune
+E006,Farhan Khan,HR,50000,31,Delhi
+E007,Geeta Nair,Engineering,95000,35,Bangalore
+E008,Harish Kumar,Data Science,70000,26,Mumbai
+E009,Isha Joshi,HR,60000,30,Pune
+E010,Jay Malhotra,Engineering,88000,33,Delhi
+E011,Kavya Reddy,Data Science,82000,28,Bangalore
+E012,Lokesh Verma,Engineering,92000,36,Mumbai
+E013,Meera Iyer,HR,58000,27,Delhi
+E014,Nikhil Gupta,Data Science,78000,29,Pune
+E015,Pooja Shah,Engineering,87000,31,Bangalore
