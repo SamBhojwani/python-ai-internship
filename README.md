@@ -259,3 +259,26 @@ python day-10/sales_eda.py
 ```bash
 python day-10/eda_report_generator.py
 ```
+
+
+## Day 11 - Data Cleaning & Feature Engineering
+
+**employee_cleaner.py** - Cleans employee dataset - removes duplicates, fills missing values, standardizes department names and creates annual salary column.
+```bash
+python3 day-11/employee_cleaner.py
+```
+
+**student_cleaner.py** - Prepares student dataset - handles missing marks, calculates total marks, percentage and assigns grades (A/B/C/D/F).
+```bash
+python3 day-11/student_cleaner.py
+```
+
+**sales_cleaner.py** - Engineers features in sales dataset - creates profit, profit percentage, quarter and financial year columns.
+```bash
+python3 day-11/sales_cleaner.py
+```
+
+**data_cleaner.py** - Reusable DataCleaner class with remove duplicates, handle missing values, normalize columns, feature engineering and export methods. Works with any CSV.
+```bash
+python3 day-11/data_cleaner.py
+```
