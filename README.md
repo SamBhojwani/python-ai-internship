@@ -282,3 +282,26 @@ python3 day-11/sales_cleaner.py
 ```bash
 python3 day-11/data_cleaner.py
 ```
+
+
+## Day 12 - Introduction to Machine Learning
+
+**salary_prediction.py** - Predicts employee annual salary using Linear Regression with age and department as features.
+```bash
+python3 day-12/salary_prediction.py
+```
+
+**student_prediction.py** - Predicts student percentage using subject marks as features. Achieves R2 of 1.0 since percentage is derived from marks.
+```bash
+python3 day-12/student_prediction.py
+```
+
+**ml_pipeline.py** - Reusable ML pipeline script that handles load, preprocess, split, train and evaluate for any dataset.
+```bash
+python3 day-12/ml_pipeline.py
+```
+
+**ml_pipeline_class.py** - OOP-based MLPipeline class with load, preprocess, split, train, predict and save model methods.
+```bash
+python3 day-12/ml_pipeline_class.py
+```
