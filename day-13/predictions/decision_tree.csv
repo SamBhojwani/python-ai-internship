@@ -1,0 +1,4 @@
+name,department,actual_salary,predicted_salary,difference
+Jay Malhotra,Engineering,1056000,1020000.0,36000.0
+Lokesh Verma,Engineering,1104000,1140000.0,-36000.0
+Aman Sharma,Engineering,1080000,1044000.0,36000.0
