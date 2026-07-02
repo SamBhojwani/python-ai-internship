@@ -305,3 +305,18 @@ python3 day-12/ml_pipeline.py
 ```bash
 python3 day-12/ml_pipeline_class.py
 ```
+
+
+## Day 13 - Model Evaluation & Performance Comparison
+
+**model_comparison.py** - Compares Linear Regression, Decision Tree and Random Forest on employee salary dataset. Exports predictions to CSV.
+```bash
+python3 day-13/model_comparison.py
+```
+
+**model_improvement.py** - Experiments with split ratios, hyperparameter tuning, cross validation and feature scaling to improve model performance.
+```bash
+python3 day-13/model_improvement.py
+```
+
+**evaluation_report.md** - Full model evaluation report documenting dataset, features, algorithms, metrics, best model and suggestions.
