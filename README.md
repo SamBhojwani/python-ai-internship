@@ -320,3 +320,34 @@ python3 day-13/model_improvement.py
 ```
 
 **evaluation_report.md** - Full model evaluation report documenting dataset, features, algorithms, metrics, best model and suggestions.
+
+
+## Day 14 - Week 2 Mini Project: Employee Salary Prediction System
+
+A complete end-to-end ML application consolidating all Week 2 concepts.
+
+### Structure
+day-14-mini-project/
+├── dataset/raw/ and cleaned/
+├── models/
+├── reports/predictions/
+├── src/
+│   ├── preprocessing.py
+│   ├── feature_engineering.py
+│   ├── model_training.py
+│   ├── prediction.py
+│   └── main.py
+└── model_evaluation_report.md
+
+### Features
+- Complete ML pipeline from raw data to predictions
+- Three models compared - Linear Regression, Decision Tree, Random Forest
+- Interactive salary prediction interface
+- Logging to app.log
+- Model saved with pickle for reuse
+
+### Usage
+```bash
+cd day-14-mini-project/src
+python3 main.py
+```
