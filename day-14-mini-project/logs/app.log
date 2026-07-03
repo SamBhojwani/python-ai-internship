@@ -1,0 +1,26 @@
+2026-07-03 11:33:28 [INFO] Application started.
+2026-07-03 11:33:28 [INFO] Loaded 15 records from ../dataset/raw/employees.csv
+2026-07-03 11:33:28 [INFO] Removed 0 duplicate(s).
+2026-07-03 11:33:28 [INFO] Data cleaning complete.
+2026-07-03 11:33:28 [INFO] Cleaned dataset saved to ../dataset/cleaned/employees_cleaned.csv
+2026-07-03 11:33:28 [INFO] Created feature: annual_salary
+2026-07-03 11:33:28 [INFO] Created feature: experience_group
+2026-07-03 11:33:28 [INFO] Created feature: age_category
+2026-07-03 11:33:28 [INFO] Encoded column: 'department'
+2026-07-03 11:33:28 [INFO] Encoded column: 'experience_group'
+2026-07-03 11:33:28 [INFO] Encoded column: 'age_category'
+2026-07-03 11:33:28 [INFO] Feature matrix shape: (15, 3)
+2026-07-03 11:33:28 [INFO] Train: 12 | Test: 3
+2026-07-03 11:33:28 [INFO] Trained: Linear Regression
+2026-07-03 11:33:28 [INFO] Trained: Decision Tree
+2026-07-03 11:33:28 [INFO] Trained: Random Forest
+2026-07-03 11:33:28 [INFO] Linear Regression - MAE: 124472.43 | R2: -70.4645
+2026-07-03 11:33:28 [INFO] Decision Tree - MAE: 36000.00 | R2: -2.3750
+2026-07-03 11:33:28 [INFO] Random Forest - MAE: 31440.00 | R2: -4.5523
+2026-07-03 11:33:28 [INFO] Predictions saved to ../reports/predictions/linear_regression.csv
+2026-07-03 11:33:28 [INFO] Predictions saved to ../reports/predictions/decision_tree.csv
+2026-07-03 11:33:28 [INFO] Predictions saved to ../reports/predictions/random_forest.csv
+2026-07-03 11:33:28 [INFO] Model saved to ../models/best_model.pkl
+2026-07-03 11:33:28 [INFO] Encoders saved to ../models/encoders.pkl
+2026-07-03 11:33:28 [INFO] Model and encoders loaded successfully.
+2026-07-03 11:35:01 [INFO] Application finished.
