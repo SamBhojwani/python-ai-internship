@@ -351,3 +351,45 @@ day-14-mini-project/
 cd day-14-mini-project/src
 python3 main.py
 ```
+
+
+## Day 15 - FastAPI REST API Development
+
+A REST API for employee management built with FastAPI, featuring full CRUD operations, Pydantic schema validation, auto-generated Swagger documentation, and a department filter endpoint.
+
+### Structure
+day-15/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── models.py
+│   ├── schemas.py
+│   └── routes.py
+└── requirements.txt
+
+### Features
+- Full CRUD - create, read, update and delete employees
+- In-memory data store with 3 seeded employees
+- Request and response validation using Pydantic schemas
+- Health check endpoint
+- Department filter endpoint (optional challenge)
+- Auto-generated Swagger UI at /docs
+
+### Endpoints
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /employees | Get all employees |
+| GET | /employees/{id} | Get employee by ID |
+| POST | /employees | Create a new employee |
+| PUT | /employees/{id} | Update an employee |
+| DELETE | /employees/{id} | Delete an employee |
+| GET | /employees/department/{department} | Get employees by department |
+| GET | /health | Health check |
+
+### Usage
+```bash
+cd day-15
+uvicorn app.main:app --reload
+```
+
+Open http://localhost:8000/docs to test all endpoints via Swagger UI.
