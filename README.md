@@ -355,41 +355,24 @@ python3 main.py
 
 ## Day 15 - FastAPI REST API Development
 
-A REST API for employee management built with FastAPI, featuring full CRUD operations, Pydantic schema validation, auto-generated Swagger documentation, and a department filter endpoint.
+**Employee API** - A REST API for employee management with full CRUD operations, Pydantic schema validation, health check endpoint, and department filter. Auto-generated Swagger UI at /docs.
 
-### Structure
-day-15/
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── models.py
-│   ├── schemas.py
-│   └── routes.py
-└── requirements.txt
-
-### Features
-- Full CRUD - create, read, update and delete employees
-- In-memory data store with 3 seeded employees
-- Request and response validation using Pydantic schemas
-- Health check endpoint
-- Department filter endpoint (optional challenge)
-- Auto-generated Swagger UI at /docs
-
-### Endpoints
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /employees | Get all employees |
-| GET | /employees/{id} | Get employee by ID |
-| POST | /employees | Create a new employee |
-| PUT | /employees/{id} | Update an employee |
-| DELETE | /employees/{id} | Delete an employee |
-| GET | /employees/department/{department} | Get employees by department |
-| GET | /health | Health check |
-
-### Usage
 ```bash
 cd day-15
 uvicorn app.main:app --reload
 ```
 
-Open http://localhost:8000/docs to test all endpoints via Swagger UI.
+
+
+## Day 16 - Request Validation & CRUD API Enhancement
+
+**Employee API v2** - Enhanced API with Pydantic field validation (email format, salary > 0), centralized exception handling, standardized success/error responses, services layer separating business logic from routes, and search/filter endpoints.
+
+```bash
+cd day-16
+uvicorn app.main:app --reload
+```
+
+Replace the current Day 15 section in your README with the one above, then append Day 16 below it. Then commit:
+
+```bash
