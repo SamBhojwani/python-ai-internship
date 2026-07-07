@@ -16,9 +16,9 @@ router = APIRouter()
 
 
 @router.get("/employees", response_model=List[EmployeeResponse], tags=["Employees"])
-def get_all_employees(db: Session = Depends(get_db)):
-    """Return all employees."""
-    return crud.get_all_employees(db)
+def get_all_employees(page: int = 1, size: int = 10, db: Session = Depends(get_db)):
+    """Return all employees with pagination."""
+    return crud.get_all_employees(db, page, size)
 
 @router.get("/employees/department/{department}", response_model=List[EmployeeResponse], tags=["Employees"])
 def get_employees_by_department(department: str, db: Session = Depends(get_db)):

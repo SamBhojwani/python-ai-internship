@@ -19,9 +19,10 @@ def get_next_employee_id(db: Session) -> str:
     return f"E{num:03d}"
 
 
-def get_all_employees(db: Session) -> list:
-    """Return all employees from the database."""
-    return db.query(Employee).all()
+def get_all_employees(db: Session, page: int = 1, size: int = 10) -> list:
+    """Return paginated employees from the database."""
+    offset = (page - 1) * size
+    return db.query(Employee).offset(offset).limit(size).all()
 
 
 def get_employee_by_id(db: Session, employee_id: str) -> Employee | None:
