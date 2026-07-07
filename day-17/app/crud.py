@@ -66,3 +66,9 @@ def delete_employee(db: Session, employee_id: str) -> bool:
     db.delete(employee)
     db.commit()
     return True
+
+def get_employees_by_department(db: Session, department: str) -> list:
+    """Return all employees in a given department."""
+    return db.query(Employee).filter(
+        Employee.department.ilike(f"%{department}%")
+    ).all()

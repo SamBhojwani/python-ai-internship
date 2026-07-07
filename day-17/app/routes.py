@@ -20,6 +20,13 @@ def get_all_employees(db: Session = Depends(get_db)):
     """Return all employees."""
     return crud.get_all_employees(db)
 
+@router.get("/employees/department/{department}", response_model=List[EmployeeResponse], tags=["Employees"])
+def get_employees_by_department(department: str, db: Session = Depends(get_db)):
+    """Return all employees in a given department."""
+    employees = crud.get_employees_by_department(db, department)
+    if not employees:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"No employees found in department: {department}")
+    return employees
 
 @router.get("/employees/{employee_id}", response_model=EmployeeResponse, tags=["Employees"])
 def get_employee(employee_id: str, db: Session = Depends(get_db)):
