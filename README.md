@@ -357,10 +357,6 @@ python3 main.py
 
 **Employee API** - A REST API for employee management with full CRUD operations, Pydantic schema validation, health check endpoint, and department filter. Auto-generated Swagger UI at /docs.
 
-```bash
-cd day-15
-uvicorn app.main:app --reload
-```
 
 
 
