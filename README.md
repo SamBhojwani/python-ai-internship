@@ -368,11 +368,21 @@ uvicorn app.main:app --reload
 
 **Employee API v2** - Enhanced API with Pydantic field validation (email format, salary > 0), centralized exception handling, standardized success/error responses, services layer separating business logic from routes, and search/filter endpoints.
 
-```bash
-cd day-16
-uvicorn app.main:app --reload
-```
 
-Replace the current Day 15 section in your README with the one above, then append Day 16 below it. Then commit:
 
-```bash
+## Day 17 - Database Integration with SQLAlchemy
+
+**database.py** - Configures SQLAlchemy engine, session factory and base model. Provides get_db dependency for injecting database sessions into routes.
+
+**models.py** - Defines the Employee table using SQLAlchemy ORM with columns for employee_id, name, department, salary and email.
+
+**schemas.py** - Pydantic schemas for request validation and response serialization with from_attributes enabled for ORM compatibility.
+
+**crud.py** - All database operations - create, read, update, delete, department filter and pagination using SQLAlchemy session queries.
+
+**routes.py** - API endpoint definitions wired to crud functions with database session injected via Depends(get_db).
+
+**main.py** - App setup with Base.metadata.create_all to auto-create the employees table on startup.
+
+
+
