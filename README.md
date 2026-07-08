@@ -382,3 +382,18 @@ python3 main.py
 
 
 
+## Day 18 - Authentication & API Security with JWT
+
+**security.py** - Password hashing with bcrypt and JWT token creation and validation using python-jose. Tokens expire after 30 minutes and are signed with a secret key.
+
+**auth.py** - Business logic for user registration and login. Checks for duplicate username and email on registration, verifies password against bcrypt hash on login.
+
+**dependencies.py** - Reusable FastAPI dependency that extracts the JWT token from the Authorization header, validates it, and returns the current logged in user.
+
+**models.py** - SQLAlchemy models for both Employee and User tables. User table stores hashed passwords and roles.
+
+**schemas.py** - Pydantic schemas for user registration, login and response, plus all employee schemas from Day 17.
+
+**routes.py** - Auth endpoints (register, login, me) and employee endpoints with POST, PUT and DELETE protected behind JWT authentication.
+
+**main.py** - App setup with table auto-creation on startup.
