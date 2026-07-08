@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.schemas import UserRegister, UserLogin, UserResponse
 from app import auth
+from app import auth, security
 
 router = APIRouter()
 
@@ -33,11 +34,12 @@ def register(data: UserRegister, db: Session = Depends(get_db)):
 
 @router.post("/login", tags=["Auth"])
 def login(data: UserLogin, db: Session = Depends(get_db)):
-    """Login with username and password."""
+    """Login with username and password and receive a JWT token."""
     user = auth.authenticate_user(db, data.username, data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password."
         )
-    return {"message": "Login successful", "username": user.username}
+    token = security.create_access_token({"sub": user.username})
+    return {"access_token": token, "token_type": "bearer"}
