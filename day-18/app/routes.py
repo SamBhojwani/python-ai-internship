@@ -48,6 +48,12 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
     token = security.create_access_token({"sub": user.username})
     return {"access_token": token, "token_type": "bearer"}
 
+
+@router.get("/me", response_model=UserResponse, tags=["Auth"])
+def get_current_user_info(current_user: User = Depends(get_current_user)):
+    """Return the currently logged in user's information."""
+    return current_user
+
 # Employee Endpoints
 
 @router.get("/employees", response_model=List[EmployeeResponse], tags=["Employees"])
