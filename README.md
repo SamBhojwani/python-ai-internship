@@ -397,3 +397,16 @@ python3 main.py
 **routes.py** - Auth endpoints (register, login, me) and employee endpoints with POST, PUT and DELETE protected behind JWT authentication.
 
 **main.py** - App setup with table auto-creation on startup.
+
+
+## Day 19 - Docker & Application Containerization
+
+**Dockerfile** - Builds the Employee API image using python:3.12-slim as the base image, installs dependencies and starts the server with uvicorn.
+
+**docker-compose.yml** - Defines the employee-api service with port mapping, environment variable injection from .env, and volume mapping for live reload.
+
+**.dockerignore** - Excludes unnecessary files from the Docker build context including pycache, .env, .venv and database files.
+
+**.env.example** - Template showing required environment variables without exposing real secrets. The actual .env file is excluded from version control via .gitignore.
+
+**app/config.py** - Loads environment variables from .env using python-dotenv and provides them to the rest of the application. Replaces all hardcoded values in database.py, security.py and main.py.
