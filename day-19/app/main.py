@@ -10,11 +10,12 @@ Run:
 from fastapi import FastAPI
 from app.database import engine, Base
 from app.routes import router
+from app.config import APP_NAME
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Employee API",
+    title=APP_NAME,
     description="Employee API with JWT authentication and protected endpoints.",
     version="4.0.0",
 )
@@ -26,6 +27,6 @@ app.include_router(router)
 def root():
     """Welcome endpoint."""
     return {
-        "message": "Welcome to the Employee API",
+        "message": f"Welcome to the {APP_NAME}",
         "docs": "http://localhost:8000/docs",
     }
