@@ -410,3 +410,20 @@ python3 main.py
 **.env.example** - Template showing required environment variables without exposing real secrets. The actual .env file is excluded from version control via .gitignore.
 
 **app/config.py** - Loads environment variables from .env using python-dotenv and provides them to the rest of the application. Replaces all hardcoded values in database.py, security.py and main.py.
+
+
+## Day 20 - API Testing, Logging & Documentation
+
+**logger.py** - Centralized logging configuration that writes to both console and logs/application.log with timestamps and log levels.
+
+**routes.py** - Enhanced Swagger documentation with descriptions, response models and status codes on every endpoint.
+
+**main.py** - Added request logging middleware that logs method, endpoint, response status and execution time for every request.
+
+**crud.py** - Added log statements for employee create, update and delete operations and error logs for not found cases.
+
+**auth.py** - Added log statements for successful registration, successful login and failed login attempts.
+
+**postman/Employee-Management-API.postman_collection.json** - Complete Postman collection with Auth, Employees and Health folders covering all endpoints.
+
+**day-20/README.md** - Standalone README with project overview, tech stack, folder structure, installation guide, Docker instructions, endpoint table, authentication flow and sample curl requests.
