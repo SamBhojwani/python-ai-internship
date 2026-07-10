@@ -79,3 +79,10 @@ def get_employees_by_department(db: Session, department: str) -> list:
     return db.query(Employee).filter(
         Employee.department.ilike(f"%{department}%")
     ).all()
+
+
+def search_employees_by_name(db: Session, name: str) -> list:
+    """Return employees whose name contains the search string."""
+    return db.query(Employee).filter(
+        Employee.name.ilike(f"%{name}%")
+    ).all()
