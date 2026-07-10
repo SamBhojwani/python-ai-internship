@@ -7,7 +7,8 @@ Run:
     uvicorn app.main:app --reload
 """
 
-from fastapi import FastAPI
+import time
+from fastapi import FastAPI, Request
 from app.database import engine, Base
 from app.routes import router
 from app.config import APP_NAME
@@ -20,6 +21,17 @@ app = FastAPI(
     description="Employee API with JWT authentication, SQLite persistence, and structured logging.",
     version="5.0.0",
 )
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    """Log every incoming request with method, path, status code and execution time."""
+    start_time = time.time()
+    response = await call_next(request)
+    duration = round((time.time() - start_time) * 1000, 2)
+    logger.info(f"{request.method} {request.url.path} - Status: {response.status_code} - {duration}ms")
+    return response
+
 
 app.include_router(router)
 
