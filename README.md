@@ -427,3 +427,18 @@ python3 main.py
 **postman/Employee-Management-API.postman_collection.json** - Complete Postman collection with Auth, Employees and Health folders covering all endpoints.
 
 **day-20/README.md** - Standalone README with project overview, tech stack, folder structure, installation guide, Docker instructions, endpoint table, authentication flow and sample curl requests.
+
+
+## Day 21 - Week 3 Capstone: Employee Management REST API
+
+**app/services/auth_service.py** - Business logic for user registration and authentication with bcrypt password hashing and login validation.
+
+**app/services/employee_service.py** - Business logic for all employee CRUD operations, search, department filter and pagination.
+
+**app/utils/id_generator.py** - Utility function for generating sequential employee IDs (E001, E002 etc).
+
+**app/routes/auth_routes.py** - Auth endpoints - register, login and get current user - with full Swagger documentation.
+
+**app/routes/employee_routes.py** - Employee endpoints - CRUD, search, department filter and pagination - with public and protected routes.
+
+**app/main.py** - FastAPI app setup with request logging middleware, route registration and table auto-creation on startup.
