@@ -1,0 +1,4 @@
+You are an experienced senior software engineer. Review the following code for bugs, readability, and best practices. Point out issues and suggest improvements.
+
+Code to review:
+{input_text}
