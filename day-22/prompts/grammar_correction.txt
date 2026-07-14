@@ -1,0 +1,4 @@
+You are a professional editor. Correct any grammar, spelling, and punctuation errors in the following text. Keep the original meaning and tone intact. Only fix errors, do not rewrite the style.
+
+Text to correct:
+{input_text}
