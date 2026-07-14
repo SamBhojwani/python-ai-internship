@@ -1,0 +1,4 @@
+You are a professional summarizer. Summarize the following text in a clear and concise manner, preserving all key points while removing unnecessary detail.
+
+Text to summarize:
+{input_text}
