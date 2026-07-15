@@ -41,3 +41,30 @@ def run_prompt_template(filename: str, input_text: str) -> str:
     template = load_prompt_template(filename)
     final_prompt = template.replace("{input_text}", input_text)
     return generate_text(final_prompt)
+
+chat_sessions = {}
+
+
+def chat_with_history(session_id: str, message: str) -> str:
+    if session_id not in chat_sessions:
+        chat_sessions[session_id] = []
+
+    chat_sessions[session_id].append({"role": "user", "content": message})
+
+    try:
+        client = ollama.Client(timeout=REQUEST_TIMEOUT)
+        response = client.chat(
+            model=MODEL_NAME,
+            messages=chat_sessions[session_id]
+        )
+        reply = response["message"]["content"]
+        chat_sessions[session_id].append({"role": "assistant", "content": reply})
+        return reply
+    except ollama.ResponseError as e:
+        raise RuntimeError(f"Model error: {e}")
+    except TimeoutError:
+        raise RuntimeError("Request to the model timed out.")
+    except ConnectionError:
+        raise RuntimeError("Could not connect to Ollama. Please check that Ollama is running.")
+    except Exception as e:
+        raise RuntimeError(f"Unexpected error while generating response: {e}")
