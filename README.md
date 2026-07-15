@@ -442,3 +442,50 @@ python3 main.py
 **app/routes/employee_routes.py** - Employee endpoints - CRUD, search, department filter and pagination - with public and protected routes.
 
 **app/main.py** - FastAPI app setup with request logging middleware, route registration and table auto-creation on startup.
+
+
+# Day 22 - Introduction to LLMs & Prompt Engineering
+
+## Files
+
+**prompt_comparison.md** - Report comparing 10 different prompting techniques (simple, detailed, role-based, bullet format, structured output, tone-specific, audience-specific, one-shot, chain-of-thought, few-shot) applied to the same employee performance review summarization task, with outputs and observations documented.
+
+**ai_assistant.py** - CLI application that accepts user input, sends it to a locally running Ollama model (llama3.2), and displays the generated response. Handles connection and generation errors gracefully.
+
+**ai_utility.py** - Extended CLI utility offering 5 modes: Summarize Text, Generate Email, Explain Code, Improve Grammar, and Translate Text. Loads the matching prompt template from the prompts folder, fills in the user's input, and sends it to Ollama.
+
+**prompts/summarization.txt** - Reusable prompt template for summarizing any given text.
+
+**prompts/email_generation.txt** - Reusable prompt template for generating professional emails from context.
+
+**prompts/code_review.txt** - Reusable prompt template for reviewing and explaining code, used by the Explain Code mode.
+
+**prompts/translation.txt** - Reusable prompt template for translating text.
+
+**prompts/grammar_correction.txt** - Reusable prompt template for correcting grammar, spelling, and punctuation while preserving tone.
+
+**requirements.txt** - Python dependencies for this day, currently just the ollama library.
+
+## Usage
+
+```bash
+python3 ai_assistant.py
+python3 ai_utility.py
+```
+
+
+# Day 23 - AI-Powered APIs with FastAPI
+
+**app/main.py** - FastAPI entry point, registers AI router and global exception handler.
+
+**app/schemas.py** - Request and response models with empty input validation.
+
+**app/routes/ai.py** - Endpoints for generate, summarize, translate, email, explain-code and chat.
+
+**app/services/ai_service.py** - Connects to local Ollama model, loads prompts dynamically, maintains chat history.
+
+**prompts/** - Reusable prompt templates for summarize, translate, email and explain-code.
+
+**requirements.txt** - Python dependencies for this day.
+
+Uses a local Ollama model instead of a paid API provider due to no available credits on OpenAI or Anthropic.
