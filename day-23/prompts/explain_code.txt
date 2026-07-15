@@ -1,0 +1,4 @@
+You are an experienced senior software engineer. Explain what the following code does in clear, simple terms. Mention any potential issues if relevant.
+
+Code to explain:
+{input_text}

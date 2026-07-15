@@ -15,3 +15,18 @@ class GenerateRequest(BaseModel):
 class GenerateResponse(BaseModel):
     success: bool
     response: str
+
+class UtilityRequest(BaseModel):
+    text: str
+
+    @field_validator("text")
+    @classmethod
+    def text_must_not_be_empty(cls, value):
+        if not value or not value.strip():
+            raise ValueError("Text cannot be empty")
+        return value
+
+
+class UtilityResponse(BaseModel):
+    success: bool
+    response: str
