@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas import GenerateRequest, GenerateResponse, UtilityRequest, UtilityResponse
-from app.services.ai_service import generate_text, run_prompt_template
+from app.schemas import GenerateRequest, GenerateResponse, UtilityRequest, UtilityResponse, ChatRequest, ChatResponse
+from app.services.ai_service import generate_text, run_prompt_template, chat_with_history
 
 router = APIRouter(prefix="/ai", tags=["AI"])
 
@@ -46,5 +46,14 @@ def explain_code(request: UtilityRequest):
     try:
         result = run_prompt_template("explain_code.txt", request.text)
         return UtilityResponse(success=True, response=result)
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@router.post("/chat", response_model=ChatResponse)
+def chat(request: ChatRequest):
+    try:
+        result = chat_with_history(request.session_id, request.message)
+        return ChatResponse(success=True, response=result, session_id=request.session_id)
     except RuntimeError as e:
         raise HTTPException(status_code=503, detail=str(e))

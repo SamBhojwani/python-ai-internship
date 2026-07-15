@@ -26,7 +26,23 @@ class UtilityRequest(BaseModel):
             raise ValueError("Text cannot be empty")
         return value
 
-
 class UtilityResponse(BaseModel):
     success: bool
     response: str
+
+class ChatRequest(BaseModel):
+    session_id: str
+    message: str
+
+    @field_validator("message")
+    @classmethod
+    def message_must_not_be_empty(cls, value):
+        if not value or not value.strip():
+            raise ValueError("Message cannot be empty")
+        return value
+
+
+class ChatResponse(BaseModel):
+    success: bool
+    response: str
+    session_id: str
