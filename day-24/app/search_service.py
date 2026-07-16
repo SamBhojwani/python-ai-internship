@@ -17,18 +17,21 @@ if not search_logger.handlers:
     search_logger.addHandler(file_handler)
 
 
-def perform_search(query: str, n_results: int = 1):
+def perform_search(query: str, top: int = 1, min_score: float = 0.0):
     start_time = time.time()
 
     query_embedding = generate_embedding(query)
-    results = query_collection(query_embedding, n_results=n_results)
+    results = query_collection(query_embedding, n_results=top)
 
     output = []
     for i in range(len(results["ids"][0])):
         doc_id = results["ids"][0][i]
         distance = results["distances"][0][i]
         similarity_score = round(1 - distance, 4)
-        output.append({"document": doc_id, "score": similarity_score})
+        metadata = results["metadatas"][0][i]
+
+        if similarity_score >= min_score:
+            output.append({"document": doc_id, "score": similarity_score, "metadata": metadata})
 
     response_time_ms = round((time.time() - start_time) * 1000, 2)
 
