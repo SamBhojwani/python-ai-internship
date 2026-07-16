@@ -489,3 +489,22 @@ python3 ai_utility.py
 **requirements.txt** - Python dependencies for this day.
 
 Uses a local Ollama model instead of a paid API provider due to no available credits on OpenAI or Anthropic.
+
+
+# Day 24 - Embeddings & Vector Databases
+
+**app/embedding.py** - Generates text embeddings locally using sentence-transformers (all-MiniLM-L6-v2).
+
+**app/vector_store.py** - ChromaDB persistent client and collection functions for adding and querying vectors using cosine similarity.
+
+**app/search_service.py** - Performs semantic search with top N and minimum score filtering, and logs every search to logs/search.log.
+
+**app/routes.py** - POST /search endpoint returning ranked documents with similarity scores and metadata.
+
+**index_documents.py** - Reads all documents, generates embeddings and stores them in the vector database.
+
+**search.py** - Standalone CLI search utility for testing semantic search outside the API.
+
+**documents/** - 10 sample text documents covering Python, FastAPI, Docker, SQLAlchemy, Machine Learning, REST APIs, JWT, Git, NumPy and Pandas.
+
+Uses sentence-transformers and ChromaDB running fully locally, no external API required.
