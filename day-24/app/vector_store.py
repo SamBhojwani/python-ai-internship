@@ -12,7 +12,10 @@ def get_collection():
     if _client is None:
         _client = chromadb.PersistentClient(path=VECTOR_DB_DIR)
     if _collection is None:
-        _collection = _client.get_or_create_collection(name="documents")
+        _collection = _client.get_or_create_collection(
+            name="documents",
+            metadata={"hnsw:space": "cosine"}
+        )
     return _collection
 
 
