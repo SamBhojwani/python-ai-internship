@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post("/search", response_model=SearchResponse)
 def search(request: SearchRequest):
     try:
-        results = perform_search(request.query, n_results=1)
+        results = perform_search(request.query, top=request.top, min_score=request.min_score)
         return SearchResponse(query=request.query, results=results)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Search failed: {e}")
