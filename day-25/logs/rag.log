@@ -1,0 +1,10 @@
+2026-07-17 15:27:01,960
+Question: Explain SQLAlchemy
+Retrieved Documents: ['sqlalchemy.txt', 'pandas.txt', 'python.txt']
+Response Time: 8900.38 ms
+
+2026-07-17 15:27:13,999
+Question: What is Git used for
+Retrieved Documents: ['git.txt', 'docker.txt', 'sqlalchemy.txt']
+Response Time: 3633.56 ms
+
