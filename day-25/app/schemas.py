@@ -24,3 +24,23 @@ class AskResponse(BaseModel):
     documents_used: List[str]
     sources: List[Source]
     retrieved_count: int
+
+
+class ChatRequest(BaseModel):
+    session_id: str
+    message: str
+
+    @field_validator("message")
+    @classmethod
+    def message_must_not_be_empty(cls, value):
+        if not value or not value.strip():
+            raise ValueError("Message cannot be empty")
+        return value
+
+
+class ChatResponse(BaseModel):
+    session_id: str
+    answer: str
+    documents_used: List[str]
+    sources: List[Source]
+    retrieved_count: int
