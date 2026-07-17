@@ -508,3 +508,24 @@ Uses a local Ollama model instead of a paid API provider due to no available cre
 **documents/** - 10 sample text documents covering Python, FastAPI, Docker, SQLAlchemy, Machine Learning, REST APIs, JWT, Git, NumPy and Pandas.
 
 Uses sentence-transformers and ChromaDB running fully locally, no external API required.
+
+
+# Day 25 - Building a RAG Assistant
+
+**app/services/embedding_service.py** - Generates text embeddings locally using sentence-transformers.
+
+**app/services/retrieval_service.py** - ChromaDB persistent client for storing and retrieving document embeddings using cosine similarity.
+
+**app/services/llm_service.py** - Sends prompts to a local Ollama model and returns generated answers.
+
+**app/services/rag_service.py** - Combines retrieval and generation, builds context-grounded prompts, logs every request, and maintains conversation history for chat.
+
+**app/routes/rag.py** - POST /ai/ask for single-turn RAG question answering and POST /ai/chat for session-based conversational RAG.
+
+**index_documents.py** - Indexes documents into the vector database.
+
+**test_retrieval.py** - Standalone CLI to test document retrieval outside the API.
+
+**documents/** - Same 10 technical documents used on Day 24, re-indexed for this day's vector database.
+
+Combines FastAPI, ChromaDB and a local Ollama model into a full retrieval-augmented generation pipeline, answering questions grounded in the indexed documents with source attribution and logging.
