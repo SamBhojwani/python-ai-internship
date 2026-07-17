@@ -58,3 +58,54 @@ def answer_question(question: str, top_n: int = 3):
         "sources": sources,
         "retrieved_count": len(retrieved)
     }
+
+chat_sessions = {}
+
+
+def chat_with_context(session_id: str, message: str, top_n: int = 3):
+    start_time = time.time()
+
+    if session_id not in chat_sessions:
+        chat_sessions[session_id] = []
+
+    query_embedding = generate_embedding(message)
+    retrieved = retrieve_documents(query_embedding, top_n=top_n)
+    context_text = "\n\n".join([r["text"] for r in retrieved])
+
+    history_text = ""
+    for turn in chat_sessions[session_id]:
+        history_text += f"User: {turn['user']}\nAssistant: {turn['assistant']}\n\n"
+
+    final_prompt = f"""You are an AI Assistant.
+Use ONLY the following context to answer the question.
+Consider the previous conversation for context if relevant.
+
+Previous Conversation:
+{history_text}
+
+Context:
+{context_text}
+
+Question:
+{message}
+"""
+
+    answer = generate_answer(final_prompt)
+
+    chat_sessions[session_id].append({"user": message, "assistant": answer})
+
+    documents_used = [r["document"] for r in retrieved]
+    sources = [{"document": r["document"], "score": r["score"]} for r in retrieved]
+
+    response_time_ms = round((time.time() - start_time) * 1000, 2)
+
+    rag_logger.info(
+        f"{message}\nRetrieved Documents: {documents_used}\nResponse Time: {response_time_ms} ms\n"
+    )
+
+    return {
+        "answer": answer,
+        "documents_used": documents_used,
+        "sources": sources,
+        "retrieved_count": len(retrieved)
+    }
