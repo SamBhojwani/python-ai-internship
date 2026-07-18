@@ -44,3 +44,13 @@ class ChatResponse(BaseModel):
     documents_used: List[str]
     sources: List[Source]
     retrieved_count: int
+
+
+class HistoryTurn(BaseModel):
+    user: str
+    assistant: str
+
+
+class HistoryResponse(BaseModel):
+    session_id: str
+    history: List[HistoryTurn]
