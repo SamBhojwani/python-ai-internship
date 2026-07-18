@@ -135,3 +135,6 @@ Question:
         "sources": sources,
         "retrieved_count": len(retrieved)
     }
+
+def get_history(session_id: str) -> list:
+    return load_session(session_id)

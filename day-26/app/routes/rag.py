@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas import AskRequest, AskResponse, ChatRequest, ChatResponse
-from app.services.rag_service import answer_question, chat_with_context
+from app.schemas import AskRequest, AskResponse, ChatRequest, ChatResponse, HistoryResponse
+from app.services.rag_service import answer_question, chat_with_context, get_history
 
 router = APIRouter(prefix="/ai", tags=["RAG"])
 
@@ -33,3 +33,9 @@ def chat(request: ChatRequest):
         )
     except RuntimeError as e:
         raise HTTPException(status_code=503, detail=str(e))
+    
+
+@router.get("/history", response_model=HistoryResponse)
+def history(session_id: str):
+    turns = get_history(session_id)
+    return HistoryResponse(session_id=session_id, history=turns)
