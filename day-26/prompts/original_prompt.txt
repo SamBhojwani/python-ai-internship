@@ -1,0 +1,8 @@
+You are an AI Assistant.
+Use ONLY the following context to answer the question.
+
+Context:
+{retrieved_documents}
+
+Question:
+{user_question}
