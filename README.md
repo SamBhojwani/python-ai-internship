@@ -529,3 +529,26 @@ Uses sentence-transformers and ChromaDB running fully locally, no external API r
 **documents/** - Same 10 technical documents used on Day 24, re-indexed for this day's vector database.
 
 Combines FastAPI, ChromaDB and a local Ollama model into a full retrieval-augmented generation pipeline, answering questions grounded in the indexed documents with source attribution and logging.
+
+
+# Day 26 - Enhancing the RAG Assistant
+
+**app/services/rag_service.py** - Adds persistent conversation memory using JSON files in conversations/, an optimized prompt template with explicit refusal instructions, and a get_history function.
+
+**app/routes/rag.py** - Adds GET /ai/history for retrieving a session's conversation, alongside the existing /ai/ask and /ai/chat endpoints.
+
+**prompts/original_prompt.txt** - The baseline prompt template used through Day 25.
+
+**prompts/optimized_prompt.txt** - Improved prompt template with explicit hallucination guardrails and concise response instructions.
+
+**prompts/prompt_comparison.md** - Documents response quality, length and accuracy differences between the original and optimized prompts.
+
+**compare_retrieval.py** - Compares retrieval and answer quality across top 1, top 3 and top 5 document retrieval.
+
+**prompts/retrieval_comparison.md** - Documents findings from the multi-document retrieval comparison.
+
+**evaluation/evaluation_report.md** - Full evaluation report covering all questions tested, retrieved documents, responses, observations and improvements made.
+
+**conversations/** - Persisted session conversation history stored as JSON files.
+
+Enhances the Day 25 RAG Assistant with persistent conversation memory, an optimized prompt reducing hallucination on out-of-context questions, and a documented comparison of retrieval depth showing top 3 as the best balance of accuracy and focus.
