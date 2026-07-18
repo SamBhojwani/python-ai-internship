@@ -1,0 +1,10 @@
+[
+  {
+    "user": "What is FastAPI used for?",
+    "assistant": "FastAPI is a modern web framework that is commonly used to build REST APIs. Specifically, it allows developers to create fast, well-documented, and easy-to-maintain APIs that need to be RESTful in design."
+  },
+  {
+    "user": "Does it work well with the database tool we discussed earlier?",
+    "assistant": "Yes, FastAPI works well with SQLAlchemy, a Python SQL toolkit and object relational mapper that provides an ORM layer for mapping Python classes to database tables. This allows developers to use SQLAlchemy's functionality in conjunction with FastAPI to create REST APIs that interact with databases using Python code."
+  }
+]
