@@ -21,8 +21,12 @@ if not rag_logger.handlers:
     file_handler.setFormatter(formatter)
     rag_logger.addHandler(file_handler)
 
-PROMPT_TEMPLATE = """You are an AI Assistant.
-Use ONLY the following context to answer the question.
+PROMPT_TEMPLATE = """You are a precise technical assistant that answers questions strictly using the provided context.
+
+Instructions:
+Answer ONLY using the information in the context below.
+If the answer is not present in the context, respond exactly with: "I couldn't find this information in the provided documents."
+Keep your answer concise and factual. Do not add information that is not supported by the context.
 
 Context:
 {retrieved_documents}
@@ -96,9 +100,10 @@ def chat_with_context(session_id: str, message: str, top_n: int = 3):
     for turn in history:
         history_text += f"User: {turn['user']}\nAssistant: {turn['assistant']}\n\n"
 
-    final_prompt = f"""You are an AI Assistant.
-Use ONLY the following context to answer the question.
+    final_prompt = f"""You are a precise technical assistant that answers questions strictly using the provided context.
 Consider the previous conversation for context if relevant.
+If the answer is not present in the context or conversation, respond exactly with: "I couldn't find this information in the provided documents."
+Keep your answer concise and factual.
 
 Previous Conversation:
 {history_text}
