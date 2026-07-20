@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-from app.routes import assistant
+from app.routes import assistant, documents
 
 app = FastAPI(title="Enterprise AI Knowledge Assistant", version="1.0.0")
 
 app.include_router(assistant.router)
+app.include_router(documents.router)
 
 
 @app.get("/")
