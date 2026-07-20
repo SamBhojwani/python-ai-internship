@@ -552,3 +552,22 @@ Combines FastAPI, ChromaDB and a local Ollama model into a full retrieval-augmen
 **conversations/** - Persisted session conversation history stored as JSON files.
 
 Enhances the Day 25 RAG Assistant with persistent conversation memory, an optimized prompt reducing hallucination on out-of-context questions, and a documented comparison of retrieval depth showing top 3 as the best balance of accuracy and focus.
+
+
+# Day 27 - Enterprise AI Knowledge Assistant
+
+**app/services/assistant_service.py** - RAG logic for the enterprise assistant, including category-filtered retrieval, question answering, search, category listing and document listing.
+
+**app/services/document_service.py** - Handles uploading new documents to disk and the vector database, and removing documents from both.
+
+**app/routes/assistant.py** - POST /assistant/ask, POST /assistant/search, GET /assistant/categories, GET /assistant/documents, all supporting an optional category filter.
+
+**app/routes/documents.py** - POST /documents/upload, GET /documents, DELETE /documents/{id} for document management.
+
+**knowledge/** - 20 documents across 5 categories: hr, technical, policies, manuals and faq.
+
+**index_knowledge_base.py** - Indexes all knowledge base documents into the vector database with category metadata.
+
+**category_search_test.md** - Verifies category-based search correctly restricts retrieval to a single knowledge category.
+
+Extends the RAG pattern from Days 25 and 26 into a multi-category enterprise knowledge base with dynamic document upload and deletion, and category-scoped search and question answering.
