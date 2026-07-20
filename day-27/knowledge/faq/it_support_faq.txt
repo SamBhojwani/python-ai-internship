@@ -1,0 +1,11 @@
+Q: My laptop is running slow, what should I do?
+A: Restart your laptop first. If the issue persists, raise a ticket with the IT helpdesk with details of the problem.
+
+Q: How do I connect to the company VPN?
+A: Install the VPN client from the IT portal and log in using your company credentials. Contact IT if you face connection issues.
+
+Q: Can I install personal software on my company laptop?
+A: Only pre-approved software can be installed. Contact IT for approval before installing anything not on the standard list.
+
+Q: What do I do if I lose my company laptop?
+A: Report the loss to IT and security immediately so the device can be remotely locked and data protected.
