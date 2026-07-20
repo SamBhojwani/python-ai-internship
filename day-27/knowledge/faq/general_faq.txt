@@ -1,0 +1,11 @@
+Q: How do I reset my company account password?
+A: Go to the IT self-service portal and click Forgot Password. A reset link will be sent to your registered email.
+
+Q: Who do I contact for IT issues?
+A: Raise a ticket through the IT helpdesk portal or email itsupport@company.com for urgent issues.
+
+Q: How do I book a meeting room?
+A: Meeting rooms can be booked through the internal calendar system by selecting an available room and time slot.
+
+Q: What is the process for requesting new software?
+A: Submit a software request through the IT portal with business justification, which will be reviewed by your manager and IT.

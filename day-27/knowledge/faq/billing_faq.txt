@@ -1,0 +1,11 @@
+Q: How do I submit an expense claim?
+A: Expense claims are submitted through the finance portal with original receipts attached within 30 days of the expense.
+
+Q: How long does expense reimbursement take?
+A: Reimbursements are typically processed within 10 working days of an approved claim.
+
+Q: What expenses require prior approval?
+A: Expenses above 5000 rupees require prior approval from the reporting manager before being incurred.
+
+Q: Who do I contact for billing discrepancies?
+A: Contact the finance team through the finance portal or email finance@company.com for any billing discrepancies.
