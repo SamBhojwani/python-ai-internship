@@ -4,10 +4,11 @@ from sqlalchemy.orm import Session
 from app.schemas import (
     AskRequest, AskResponse, SearchRequest, SearchResponse,
     CategoriesResponse, DocumentsResponse, HistoryResponse,
-    FeedbackRequest, FeedbackResponse
+    FeedbackRequest, FeedbackResponse, AnalyticsResponse
 )
 from app.services.assistant_service import (
-    ask_assistant, search_documents, list_categories, list_documents, get_user_history, submit_feedback
+    ask_assistant, search_documents, list_categories, list_documents,
+    get_user_history, submit_feedback, get_analytics
 )
 from app.dependencies import get_current_user
 from app.database import get_db
@@ -65,3 +66,9 @@ def feedback(request: FeedbackRequest, current_user: User = Depends(get_current_
         return FeedbackResponse(success=True, feedback_id=feedback_id)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+    
+
+@router.get("/analytics", response_model=AnalyticsResponse)
+def analytics(db: Session = Depends(get_db)):
+    result = get_analytics(db)
+    return AnalyticsResponse(**result)
