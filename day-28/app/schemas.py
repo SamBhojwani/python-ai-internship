@@ -1,5 +1,6 @@
 from pydantic import BaseModel, field_validator
 from typing import List, Optional
+from datetime import datetime
 
 
 class AskRequest(BaseModel):
@@ -74,3 +75,17 @@ class UserLogin(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+
+
+class ConversationEntry(BaseModel):
+    id: int
+    question: str
+    answer: str
+    timestamp: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class HistoryResponse(BaseModel):
+    history: List[ConversationEntry]
