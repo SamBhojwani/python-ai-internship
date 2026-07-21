@@ -25,7 +25,7 @@ def ask(
     db: Session = Depends(get_db)
 ):
     try:
-        result = ask_assistant(request.question, top_n=3, category=category, db=db, user_id=current_user.id)
+        result = ask_assistant(request.question, top_n=3, category=category, db=db, user_id=current_user.id, username=current_user.username)
         return AskResponse(answer=result["answer"], sources=result["sources"])
     except RuntimeError as e:
         raise HTTPException(status_code=503, detail=str(e))
