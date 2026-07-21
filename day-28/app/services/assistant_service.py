@@ -1,12 +1,24 @@
 import os
+import time
+import logging
 from app.services.embedding_service import generate_embedding
 from app.services.vector_service import query_collection, get_all_documents
 from app.services.llm_service import generate_answer
-from app.models import Conversation
+from app.models import Conversation, Feedback
 from sqlalchemy.orm import Session
-import time
-from app.models import Feedback
 from sqlalchemy import func
+
+LOGS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "logs")
+os.makedirs(LOGS_DIR, exist_ok=True)
+
+assistant_logger = logging.getLogger("assistant_logger")
+assistant_logger.setLevel(logging.INFO)
+
+if not assistant_logger.handlers:
+    file_handler = logging.FileHandler(os.path.join(LOGS_DIR, "assistant.log"))
+    formatter = logging.Formatter("%(asctime)s\n%(message)s")
+    file_handler.setFormatter(formatter)
+    assistant_logger.addHandler(file_handler)
 
 PROMPT_TEMPLATE = """You are an enterprise knowledge assistant.
 Answer ONLY using the information in the context below.
@@ -21,46 +33,58 @@ Question:
 """
 
 
-def ask_assistant(question: str, top_n: int = 3, category: str = None, db: Session = None, user_id: int = None):
+def ask_assistant(question: str, top_n: int = 3, category: str = None, db: Session = None, user_id: int = None, username: str = None):
     start_time = time.time()
+    status = "success"
 
-    query_embedding = generate_embedding(question)
-    results = query_collection(query_embedding, n_results=top_n, category=category)
+    try:
+        query_embedding = generate_embedding(question)
+        results = query_collection(query_embedding, n_results=top_n, category=category)
 
-    retrieved = []
-    for i in range(len(results["ids"][0])):
-        doc_id = results["ids"][0][i]
-        document_text = results["documents"][0][i]
-        distance = results["distances"][0][i]
-        metadata = results["metadatas"][0][i]
-        similarity_score = round(1 - distance, 4)
-        retrieved.append({
-            "document": metadata.get("filename", doc_id),
-            "category": metadata.get("category", "unknown"),
-            "text": document_text,
-            "score": similarity_score
-        })
+        retrieved = []
+        for i in range(len(results["ids"][0])):
+            doc_id = results["ids"][0][i]
+            document_text = results["documents"][0][i]
+            distance = results["distances"][0][i]
+            metadata = results["metadatas"][0][i]
+            similarity_score = round(1 - distance, 4)
+            retrieved.append({
+                "document": metadata.get("filename", doc_id),
+                "category": metadata.get("category", "unknown"),
+                "text": document_text,
+                "score": similarity_score
+            })
 
-    context_text = "\n\n".join([r["text"] for r in retrieved])
-    final_prompt = PROMPT_TEMPLATE.format(retrieved_documents=context_text, user_question=question)
-    answer = generate_answer(final_prompt)
+        context_text = "\n\n".join([r["text"] for r in retrieved])
+        final_prompt = PROMPT_TEMPLATE.format(retrieved_documents=context_text, user_question=question)
+        answer = generate_answer(final_prompt)
 
-    sources = [{"document": r["document"], "score": r["score"]} for r in retrieved]
-    response_time_ms = round((time.time() - start_time) * 1000)
+        sources = [{"document": r["document"], "score": r["score"]} for r in retrieved]
+        response_time_ms = round((time.time() - start_time) * 1000)
 
-    if db is not None and user_id is not None:
-        doc_category = retrieved[0]["category"] if retrieved else category
-        conversation = Conversation(
-            user_id=user_id,
-            question=question,
-            answer=answer,
-            category=doc_category,
-            response_time_ms=response_time_ms
+        if db is not None and user_id is not None:
+            doc_category = retrieved[0]["category"] if retrieved else category
+            conversation = Conversation(
+                user_id=user_id,
+                question=question,
+                answer=answer,
+                category=doc_category,
+                response_time_ms=response_time_ms
+            )
+            db.add(conversation)
+            db.commit()
+
+        return {"answer": answer, "sources": sources}
+
+    except Exception:
+        status = "failed"
+        raise
+
+    finally:
+        response_time_ms = round((time.time() - start_time) * 1000)
+        assistant_logger.info(
+            f"User: {username or 'unknown'}\nQuestion: {question}\nResponse Time: {response_time_ms} ms\nStatus: {status}\n"
         )
-        db.add(conversation)
-        db.commit()
-
-    return {"answer": answer, "sources": sources}
 
 
 def search_documents(query: str, top_n: int = 5, category: str = None):
