@@ -1,22 +1,29 @@
 from fastapi import APIRouter, HTTPException, Query, Depends
 from typing import Optional
+from sqlalchemy.orm import Session
 from app.schemas import (
     AskRequest, AskResponse, SearchRequest, SearchResponse,
-    CategoriesResponse, DocumentsResponse
+    CategoriesResponse, DocumentsResponse, HistoryResponse
 )
 from app.services.assistant_service import (
-    ask_assistant, search_documents, list_categories, list_documents
+    ask_assistant, search_documents, list_categories, list_documents, get_user_history
 )
 from app.dependencies import get_current_user
+from app.database import get_db
 from app.models import User
 
 router = APIRouter(prefix="/assistant", tags=["Assistant"])
 
 
 @router.post("/ask", response_model=AskResponse)
-def ask(request: AskRequest, category: Optional[str] = Query(default=None), current_user: User = Depends(get_current_user)):
+def ask(
+    request: AskRequest,
+    category: Optional[str] = Query(default=None),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
     try:
-        result = ask_assistant(request.question, top_n=3, category=category)
+        result = ask_assistant(request.question, top_n=3, category=category, db=db, user_id=current_user.id)
         return AskResponse(answer=result["answer"], sources=result["sources"])
     except RuntimeError as e:
         raise HTTPException(status_code=503, detail=str(e))
@@ -40,3 +47,9 @@ def categories():
 def documents():
     docs = list_documents()
     return DocumentsResponse(documents=docs, total=len(docs))
+
+
+@router.get("/history", response_model=HistoryResponse)
+def history(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    conversations = get_user_history(db, current_user.id)
+    return HistoryResponse(history=conversations)
