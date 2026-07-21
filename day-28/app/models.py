@@ -22,3 +22,14 @@ class Conversation(Base):
     category = Column(String, nullable=True)
     response_time_ms = Column(Integer, nullable=True)
     timestamp = Column(DateTime, default=datetime.utcnow)
+
+
+class Feedback(Base):
+    __tablename__ = "feedback"
+
+    id = Column(Integer, primary_key=True, index=True)
+    question_id = Column(Integer, ForeignKey("conversations.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    rating = Column(Integer, nullable=False)
+    comment = Column(Text, nullable=True)
+    timestamp = Column(DateTime, default=datetime.utcnow)
