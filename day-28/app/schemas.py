@@ -107,3 +107,10 @@ class FeedbackRequest(BaseModel):
 class FeedbackResponse(BaseModel):
     success: bool
     feedback_id: int
+
+
+class AnalyticsResponse(BaseModel):
+    total_requests: int
+    average_response_time_ms: float
+    top_category: Optional[str]
+    average_rating: Optional[float]

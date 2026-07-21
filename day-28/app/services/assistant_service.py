@@ -6,6 +6,7 @@ from app.models import Conversation
 from sqlalchemy.orm import Session
 import time
 from app.models import Feedback
+from sqlalchemy import func
 
 PROMPT_TEMPLATE = """You are an enterprise knowledge assistant.
 Answer ONLY using the information in the context below.
@@ -125,3 +126,29 @@ def submit_feedback(db: Session, user_id: int, question_id: int, rating: int, co
     db.refresh(feedback)
 
     return feedback.id
+
+
+def get_analytics(db: Session):
+    total_requests = db.query(Conversation).count()
+
+    avg_response_time = db.query(func.avg(Conversation.response_time_ms)).scalar()
+    avg_response_time = round(avg_response_time, 2) if avg_response_time else 0.0
+
+    top_category_row = (
+        db.query(Conversation.category, func.count(Conversation.category).label("count"))
+        .filter(Conversation.category.isnot(None))
+        .group_by(Conversation.category)
+        .order_by(func.count(Conversation.category).desc())
+        .first()
+    )
+    top_category = top_category_row[0] if top_category_row else None
+
+    avg_rating = db.query(func.avg(Feedback.rating)).scalar()
+    avg_rating = round(avg_rating, 2) if avg_rating else None
+
+    return {
+        "total_requests": total_requests,
+        "average_response_time_ms": avg_response_time,
+        "top_category": top_category,
+        "average_rating": avg_rating
+    }
