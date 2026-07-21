@@ -5,6 +5,7 @@ from app.services.llm_service import generate_answer
 from app.models import Conversation
 from sqlalchemy.orm import Session
 import time
+from app.models import Feedback
 
 PROMPT_TEMPLATE = """You are an enterprise knowledge assistant.
 Answer ONLY using the information in the context below.
@@ -103,3 +104,24 @@ def list_documents():
 
 def get_user_history(db: Session, user_id: int):
     return db.query(Conversation).filter(Conversation.user_id == user_id).order_by(Conversation.timestamp.desc()).all()
+
+
+def submit_feedback(db: Session, user_id: int, question_id: int, rating: int, comment: str = None):
+    conversation = db.query(Conversation).filter(
+        Conversation.id == question_id, Conversation.user_id == user_id
+    ).first()
+
+    if conversation is None:
+        raise ValueError(f"No conversation found with id {question_id} for this user")
+
+    feedback = Feedback(
+        question_id=question_id,
+        user_id=user_id,
+        rating=rating,
+        comment=comment
+    )
+    db.add(feedback)
+    db.commit()
+    db.refresh(feedback)
+
+    return feedback.id

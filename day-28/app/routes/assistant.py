@@ -3,10 +3,11 @@ from typing import Optional
 from sqlalchemy.orm import Session
 from app.schemas import (
     AskRequest, AskResponse, SearchRequest, SearchResponse,
-    CategoriesResponse, DocumentsResponse, HistoryResponse
+    CategoriesResponse, DocumentsResponse, HistoryResponse,
+    FeedbackRequest, FeedbackResponse
 )
 from app.services.assistant_service import (
-    ask_assistant, search_documents, list_categories, list_documents, get_user_history
+    ask_assistant, search_documents, list_categories, list_documents, get_user_history, submit_feedback
 )
 from app.dependencies import get_current_user
 from app.database import get_db
@@ -53,3 +54,14 @@ def documents():
 def history(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     conversations = get_user_history(db, current_user.id)
     return HistoryResponse(history=conversations)
+
+
+@router.post("/feedback", response_model=FeedbackResponse)
+def feedback(request: FeedbackRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    try:
+        feedback_id = submit_feedback(
+            db, current_user.id, request.question_id, request.rating, request.comment
+        )
+        return FeedbackResponse(success=True, feedback_id=feedback_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
