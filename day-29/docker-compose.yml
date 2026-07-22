@@ -1,0 +1,14 @@
+services:
+  assistant-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./vector_db:/app/vector_db
+      - ./knowledge:/app/knowledge
+      - ./logs:/app/logs
+    environment:
+      - HF_HUB_OFFLINE=1
+      - OLLAMA_HOST=host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
