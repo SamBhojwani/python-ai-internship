@@ -588,3 +588,22 @@ Extends the RAG pattern from Days 25 and 26 into a multi-category enterprise kno
 **app/routes/assistant.py** - Adds authentication to ask, search and upload, plus GET /assistant/history, POST /assistant/feedback and GET /assistant/analytics, alongside request logging to logs/assistant.log.
 
 Secures the Day 27 enterprise assistant with JWT authentication, persists per-user conversation history and feedback ratings to a SQLite database, exposes usage analytics, and logs every request with user, response time and status.
+
+
+# Day 29 - Project Refinement & Deployment Readiness
+
+**day-29/** - Final consolidated version of the Enterprise AI Knowledge Assistant, built from Day 28's codebase with refactoring, documentation and deployment preparation.
+
+**refactoring_notes.md** - Documents code cleanup: consistent authentication across document management endpoints, docstrings added to all routes, and a documented case of intentional endpoint duplication.
+
+**README.md** (day-29 specific) - Full standalone project documentation covering overview, features, tech stack, installation, Docker setup, API endpoints, folder structure, example requests and future improvements.
+
+**reports/api_test_report.md** - Manual test report covering all 18 endpoints tested, including success cases, error cases and authentication checks, all passing.
+
+**Dockerfile, docker-compose.yml, .env.example** - Deployment configuration for containerizing the API, with Ollama running on the host machine.
+
+**deployment_checklist.md** - Pre-deployment verification covering application files, data persistence, logging, security and outstanding items before production use.
+
+**demo_video_script.md** - Script for a 3-5 minute walkthrough demonstrating startup, login, document upload, AI question answering and Swagger testing.
+
+Finalizes the multi-day RAG assistant project with refactored code, comprehensive documentation, a full test report, and deployment-ready Docker configuration ahead of the Day 30 presentation.
