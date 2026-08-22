@@ -1,14 +1,18 @@
-# Python & AI Engineering Internship — 30 Days
+<p align="center">
+  <img src="docs/banner.png" alt="AI Engineering — thirty days, 152 commits" width="100%">
+</p>
 
 > Thirty consecutive days at **Muthu Soft Labs**, from `csv_analyzer.py` on day one to a
 > JWT-secured, Dockerised RAG knowledge assistant on day twenty-nine. **152 commits**, every
 > day's work in its own folder.
 
-![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-vector%20store-FF6B6B?style=flat-square)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![commits](https://img.shields.io/badge/commits-152-success?style=flat-square)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/ChromaDB-vector%20store-FF6B6B?style=flat-square" alt="ChromaDB">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/commits-152-success?style=flat-square" alt="commits">
+</p>
 
 **Intern:** Samarth Bhojwani · **Mentor:** Harish Kumar S · **Duration:** 30 days, remote
 
